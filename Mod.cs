@@ -1,5 +1,8 @@
 ﻿using BepInEx;
 using HarmonyLib;
+using System;
+using System.IO;
+using System.Runtime.InteropServices;
 
 namespace LethalJojo
 {
@@ -19,11 +22,13 @@ namespace LethalJojo
     [BepInPlugin(ModInfo.ID, ModInfo.NAME, ModInfo.VERSION)]
     public class Mod : BaseUnityPlugin
     {
+        public static string DLLPath;
         private static StoneMaskPatch StoneMaskPatch = null;
 
         void Awake()
         {
             Logger.LogMessage($"Loaded {ModInfo.NAME} v{ModInfo.VERSION}");
+            DLLPath = Info.Location;
 
             StoneMaskPatch = new StoneMaskPatch();
 

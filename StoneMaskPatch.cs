@@ -16,12 +16,13 @@ namespace LethalJojo
 
             try
             {
-                var asssetBundle = AssetBundle.LoadFromFile(Path.Combine(Paths.PluginPath, "PandasHellCrew-LethalJojo/LethalJojoAssetBundle"));
+                string folderPath = Path.GetDirectoryName(Mod.DLLPath);
+                var asssetBundle = AssetBundle.LoadFromFile(Path.Combine(folderPath, "LethalJojoAssetBundle"));
 
                 if (asssetBundle != null)
                 {
                     _stoneMaskMesh = asssetBundle.LoadAsset<Mesh>("StoneMask_Model");
-                    Console.WriteLine("Loaded mask from bundle.");
+                    Console.WriteLine($"Loaded mask from Asset Bundle in Directory {Path.Combine(folderPath, "LethalJojoAssetBundle")}.");
                 }
                 else 
                 {
